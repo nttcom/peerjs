@@ -1,4 +1,4 @@
-/*! skyway-peerjs build:0.4.0, development. Copyright(c) 2013 Michelle Bu <michelle@michellebu.com> 2013-2016 NTT Communications Corporation */(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*! skyway-peerjs build:0.4.1, development. Copyright(c) 2013 Michelle Bu <michelle@michellebu.com> 2013-2016 NTT Communications Corporation */(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports.RTCSessionDescription = window.RTCSessionDescription ||
 	window.mozRTCSessionDescription;
 module.exports.RTCPeerConnection = window.RTCPeerConnection ||
@@ -864,7 +864,13 @@ function Peer(id, options) {
 
   // Print skyway deprecated messages. Use a timeout so we can wait for the html to load.
   setTimeout(function() {
-    util.log('The SkyWay beta will be ending on March 22, 2018 JST. Please migrate to skyway.js (https://webrtc.ecl.ntt.com/migration.html) to continue using SkyWay without interruption. Failure to do so before March 22 will result in loss of service.');
+    var message = 'The SkyWay beta will be ending on March 22, 2018 JST. Please migrate to skyway.js (https://webrtc.ecl.ntt.com/migration.html) to continue using SkyWay without interruption. Failure to do so before March 22 will result in loss of service.';
+    // If logging function is set, display using that as well.
+    if (util._print.constructor === Function) {
+      util.warn(message);
+    }
+
+    console.warn('%c' + message, 'color: red');
   }, 0);
 
 }

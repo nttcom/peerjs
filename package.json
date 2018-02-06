@@ -1,6 +1,6 @@
 {
   "name": "skyway-peerjs",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "This branch is a customized version of PeerJS for NTT Communications's WebRTC platform SkyWay.",
   "homepage": "http://skyway.io/en",
   "main": "./lib/peer.js",
